@@ -25,6 +25,10 @@ class AppServiceProvider extends ServiceProvider
         $this->registerInertia();
         $this->registerGlide();
         $this->registerLengthAwarePaginator();
+
+        if ($this->app->isLocal()) {
+            $this->app->register(\Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
+        }
     }
 
     public function registerInertia()
